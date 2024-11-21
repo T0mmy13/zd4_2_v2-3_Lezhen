@@ -15,11 +15,6 @@ namespace Quest3
 
             int[] cord = FunctionalClassQuest3.ReadCoordinatesFromFile("input.txt");
 
-            if (cord != null)
-            {
-                Console.WriteLine("dasda");
-            }
-
             int x1m = cord[0], y1m = cord[1], x2m = cord[2], y2m = cord[3];
             int x1g = cord[4], y1g = cord[5], x2g = cord[6], y2g = cord[7];
 
@@ -50,7 +45,6 @@ namespace Quest3
             int totalArea = areaM + areaG - intersectArea;
 
             File.WriteAllText("output.txt", totalArea.ToString());
-            Console.ReadKey();
         }
     }
 }

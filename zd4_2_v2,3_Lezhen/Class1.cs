@@ -9,24 +9,34 @@ namespace zd4_2_v2_3_Lezhen
 {
     static public class FunctionalClassQuest2
     {
-        public static bool InputIsRight(string line)
+        public static string InputIsRight(string file)
         {
-            if (line.Length < 1 || line.Length > 26)
+            try
             {
-                return false;
+                string line = File.ReadAllText(file);
+
+                if (string.IsNullOrEmpty(line)) return null;
+                if (line.Length < 1 || line.Length > 26)
+                {
+                    return null;
+                }
+                foreach (char c in line)
+                {
+                    if (!char.IsLetter(c))
+                    {
+                        return null;
+                    }
+                    if (!char.IsUpper(c))
+                    {
+                        return null;
+                    }
+                }
+                return line;
             }
-            foreach (char c in line)
+            catch
             {
-                if (!char.IsLetter(c))
-                {
-                    return false;
-                }
-                if (!char.IsUpper(c))
-                {
-                    return false;
-                }
+                return null;
             }
-            return true;
         }
         public static char[] PermutationChars(char[] chars)
         {
